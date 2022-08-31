@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +15,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+// Route::get('/', [HomeController::class, 'index'])->name('index');
+// Route::get('/create', [HomeController::class, 'create'])->name('create');
+// Route::post('/store', [HomeController::class, 'store'])->name('store');
+// Route::delete('/delete/{id}', [HomeController::class, 'destroy'])->name('destroy');
+// Route::get('/edit/{id}', [HomeController::class, 'edit'])->name('edit');
+// Route::get('/show/{id}', [HomeController::class, 'show'])->name('show');
+
+
+Route::middleware('auth')->group(function(){
+    Route::resource('/posts', HomeController::class);
+    Route::get('/sair', [LoginController::class, 'logout'])->name('sair');
+});
+
+Route::resource('/login', LoginController::class);
+    
+
+Route::get('/', function(){
+    return view('welcome');
+});
