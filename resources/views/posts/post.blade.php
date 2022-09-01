@@ -23,7 +23,7 @@
                 <th>Conteúdo</th>
                 <th>Autor</th>
                 <th>Data Publicação</th>
-                <th colspan="3">Ações</th>
+                <th colspan="3" class="text-center">Ações</th>
             </tr>
         </thead>
 
@@ -39,7 +39,7 @@
                     <td>{{ $post->conteudo }}</td>
                     <td>{{ $post->user->name }}</td>
                     <td>{{ date('d/m/Y H:i:s', strtotime($post->created_at)) }}</td>
-                    <td>
+                    <td class="text-center">
                         <form action="{{ route('posts.destroy', $post) }}"
                               method="POST">
                             @method('DELETE')
@@ -52,13 +52,13 @@
                                 <i class="bi bi-trash"></i></button>
                         </form>
                     </td>
-                    <td>
+                    <td class="text-center">
                         <a href="{{ route('posts.edit', $post) }}"
                            class="btn btn-xs btn-warning"
                            title="Editar"><i class="bi bi-pencil-square"></i></a>
                     </td>
 
-                    <td>
+                    <td class="text-center">
                         <a href="{{ route('posts.show', $post) }}"
                            class="btn btn-xs btn-warning"
                            title="Editar"><i class="bi bi-eye-fill"></i></a>

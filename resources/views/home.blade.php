@@ -19,6 +19,11 @@
 </head>
 
 <body>
+
+      <header>
+            @include('includes.menu')
+      </header>
+
     <h1>Curso de Laravel 9</h1>
 
     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet veritatis repudiandae animi expedita temporibus
