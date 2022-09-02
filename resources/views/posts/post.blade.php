@@ -1,11 +1,7 @@
 @extends('home')
 
 @section('conteudo')
-    <h1>Aqui a começa a sessão conteudo</h1>
-
-    @auth
-        <a href="{{ route('sair') }}" class="btn btn-warning">Sair</a>
-    @endauth            
+    <h1>Aqui a começa a sessão conteudo</h1>           
 
     @if (Session::has('mensagem'))
         <div class="alert alert-success">

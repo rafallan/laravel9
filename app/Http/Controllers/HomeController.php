@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,7 +24,13 @@ class HomeController extends Controller
     public function store(PostRequest $request)
     {
 
-        $cadastrar = Post::create($request->all());
+        $dados = [
+            'titulo' => $request->titulo,
+            'conteudo' => $request->input('conteudo'),
+            'user_id' => Auth::user()->id,
+        ];
+
+        $cadastrar = Post::create($dados);
 
         if ($cadastrar) {
             return redirect()->route('posts.index')
