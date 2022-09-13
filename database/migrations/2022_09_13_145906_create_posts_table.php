@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('artigos', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('titulo')->unique();
+            $table->string('titulo', 100)->unique();
             $table->text('conteudo');
             $table->string('imagem')->nullable();
             $table->unsignedBigInteger('user_id');
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
+
 
             $table->foreign('user_id')
                 ->references('id')
@@ -37,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('artigos');
+        Schema::dropIfExists('posts');
     }
 };
