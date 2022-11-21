@@ -28,7 +28,9 @@
                 <small class="text-danger">{{ $errors->first('conteudo') }}</small>
             </div>
 
-            <input type="hidden" name="user_id" value="1">
+            <input type="hidden"
+                   name="user_id"
+                   value="1">
 
             <div class="">
                 <button type="submit"

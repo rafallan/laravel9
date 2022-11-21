@@ -1,7 +1,7 @@
 @extends('home')
 
 @section('conteudo')
-    <h1>Aqui a começa a sessão conteudo</h1>           
+    <h1>Aqui a começa a sessão conteudo</h1>
 
     @if (Session::has('mensagem'))
         <div class="alert alert-success">
@@ -19,7 +19,8 @@
                 <th>Conteúdo</th>
                 <th>Autor</th>
                 <th>Data Publicação</th>
-                <th colspan="3" class="text-center">Ações</th>
+                <th colspan="3"
+                    class="text-center">Ações</th>
             </tr>
         </thead>
 
