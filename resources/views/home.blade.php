@@ -20,7 +20,7 @@
     </header>
 
     <div class="container">
-        <h1>Curso de Laravel 9</h1>
+        <h1>Blog - Curso de Laravel 9</h1>
 
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet veritatis repudiandae animi expedita
             temporibus

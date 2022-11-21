@@ -2,9 +2,11 @@
 
 @section('conteudo')
 
-<a href="{{ route('posts.index') }}" class="btn btn-dark">Voltar</a>
+<h2>{{ $post->titulo }}</h2>
 
-<p>{{ $post->titulo }}</p>
+@if ($post->imagem)
+    <img src="{{ asset('storage/'. $post->imagem) }}" alt="Imagem do Post">
+@endif
 
 <p>{{ $post->conteudo }}</p>
 
@@ -12,5 +14,7 @@
 <br>
 
 <p>Autor: {{ $post->user->name }}</p>
+
+<a href="{{ route('posts.index') }}" class="btn btn-dark">Voltar</a>
 
 @endsection

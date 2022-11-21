@@ -10,7 +10,7 @@
     @endif
 
     <a href="{{ route('posts.create') }}"
-       class="btn btn-success">Cadastrar Post</a>
+       class="btn btn-success mb-3" title="Cadastrar Novo Post"><i class="bi bi-plus"></i></a>
     <table class="table table-bordered table-striped table-hover">
         <thead>
             <tr>
@@ -44,19 +44,19 @@
                                     value="Excluir"
                                     title="Excluir"
                                     onclick="return confirm('Você deseja excluir o post?')"
-                                    class="btn btn-xs btn-danger">
+                                    class="btn btn-sm btn-danger">
                                 <i class="bi bi-trash"></i></button>
                         </form>
                     </td>
                     <td class="text-center">
                         <a href="{{ route('posts.edit', $post) }}"
-                           class="btn btn-xs btn-warning"
+                           class="btn btn-sm btn-warning"
                            title="Editar"><i class="bi bi-pencil-square"></i></a>
                     </td>
 
                     <td class="text-center">
                         <a href="{{ route('posts.show', $post) }}"
-                           class="btn btn-xs btn-warning"
+                           class="btn btn-sm btn-primary"
                            title="Editar"><i class="bi bi-eye-fill"></i></a>
                     </td>
                 </tr>

@@ -4,7 +4,7 @@
     <div class="container">
 
         <form method="POST"
-              action="{{ route('posts.update', $post) }}">
+              action="{{ route('posts.update', $post) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="mb-3">
@@ -28,6 +28,16 @@
                           placeholder="Digite aqui o conteúdo..."
                           rows="10">{{ $post->conteudo }}</textarea>
                 <small class="text-danger">{{ $errors->first('conteudo') }}</small>
+            </div>
+
+            <div class="mb-3">
+                <label for="imagem"
+                       class="form-label">Imagem</label>
+                <input type="file"
+                       class="form-control"
+                       id="imagem"
+                       name="imagem">
+                <small class="text-danger">{{ $errors->first('imagem') }}</small>
             </div>
 
             <div class="">

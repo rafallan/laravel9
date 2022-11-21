@@ -26,12 +26,14 @@ class PostRequest extends FormRequest
         if ($this->method() == 'PATCH' || $this->method() == 'PUT') {
             return [
                 'titulo' => 'required|max:100|unique:posts,titulo,'. $this->post,
-                'conteudo' => 'required'
+                'conteudo' => 'required',
+                'imagem' => 'mimes:png,jpg,jpeg|max:2048|nullable',
             ];
         } else {
             return [
                 'titulo' => 'required|max:100|unique:posts,titulo',
-                'conteudo' => 'required'
+                'conteudo' => 'required',
+                'imagem' => 'required|mimes:png,jpg,jpeg|max:2048|nullable',
             ];
         }
     }

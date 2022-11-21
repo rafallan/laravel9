@@ -6,13 +6,14 @@ use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
-class HomeController extends Controller
+class PostController extends Controller
 {
     public function index()
     {
         $nome = "Rafael";
-        $posts = Post::paginate(5);
+        $posts = Post::orderBy('id', 'DESC')->paginate(5);
         return view('posts.post', ['nome' => $nome, 'posts' => $posts]);
     }
 
@@ -30,11 +31,16 @@ class HomeController extends Controller
             'user_id' => Auth::user()->id,
         ];
 
+        if ($request->imagem) {
+
+            $dados['imagem'] = $request->imagem->store('imagens');
+        }
+
         $cadastrar = Post::create($dados);
 
         if ($cadastrar) {
             return redirect()->route('posts.index')
-                ->with('mensagem', 'Cadastro realizado com sucesso!!!');
+            ->with('mensagem', 'Cadastro realizado com sucesso!!!');
         }
     }
 
@@ -46,12 +52,22 @@ class HomeController extends Controller
 
     public function update(PostRequest $request, $id)
     {
-       //dd($request->except(['_token', '_method']));
-        $atualizado = Post::where('id', $id)->update($request->except(['_token', '_method']));
+        $post = Post::find($id);
+        $data = $request->except(['_token', '_method']);
+
+        if ($request->imagem) {
+            if (Storage::exists($post->imagem)) {
+                Storage::delete($post->imagem);
+            }
+
+            $data['imagem'] = $request->imagem->store('imagens');
+        }
+
+        $atualizado = Post::where('id', $id)->update($data);
 
         if ($atualizado) {
             return redirect()->route('posts.index')
-                ->with('mensagem', 'Cadastro atualizado com sucesso!!!');
+            ->with('mensagem', 'Cadastro atualizado com sucesso!!!');
         }
     }
 
@@ -64,6 +80,9 @@ class HomeController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
+        if ($post->imagem) {
+            Storage::delete($post->imagem);
+        }
         $deletado = $post->delete();
 
         if ($deletado) {
