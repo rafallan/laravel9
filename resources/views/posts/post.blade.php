@@ -10,7 +10,7 @@
     @endif
 
     <a href="{{ route('posts.create') }}"
-       class="btn btn-success mb-3" title="Cadastrar Novo Post"><i class="bi bi-plus"></i></a>
+       class="btn btn-success mb-3" title="Cadastrar Novo Post"><i class="bi bi-plus-square"></i></a>
     <table class="table table-bordered table-striped table-hover">
         <thead>
             <tr>
