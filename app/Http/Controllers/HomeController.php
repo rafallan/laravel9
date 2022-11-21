@@ -46,7 +46,7 @@ class HomeController extends Controller
 
     public function update(PostRequest $request, $id)
     {
-       //dd($request->except(['_token', '_method']));
+        //dd($request->except(['_token', '_method']));
         $atualizado = Post::where('id', $id)->update($request->except(['_token', '_method']));
 
         if ($atualizado) {
