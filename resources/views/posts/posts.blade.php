@@ -1,7 +1,7 @@
-@extends('home')
+@extends('template')
 
 @section('conteudo')
-    <h1>Aqui a começa a sessão conteudo</h1>           
+           
 
     @if (Session::has('mensagem'))
         <div class="alert alert-success">
@@ -25,14 +25,14 @@
 
         <tbody>
             @php
-                $i = 0;
+                $i = 1;
             @endphp
 
             @foreach ($posts as $post)
                 <tr>
                     <td>{{ $i++ }}</td>
                     <td>{{ $post->titulo }}</td>
-                    <td>{{ $post->conteudo }}</td>
+                    <td>{{ Str::limit($post->conteudo, 100, '...') }}</td>
                     <td>{{ $post->user->name }}</td>
                     <td>{{ date('d/m/Y H:i:s', strtotime($post->created_at)) }}</td>
                     <td class="text-center">

@@ -23,6 +23,8 @@ class PostRequest extends FormRequest
      */
     public function rules()
     {
+        //dd($this->post);
+
         if ($this->method() == 'PATCH' || $this->method() == 'PUT') {
             return [
                 'titulo' => 'required|max:100|unique:posts,titulo,'. $this->post,

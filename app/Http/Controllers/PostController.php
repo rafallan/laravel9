@@ -14,7 +14,7 @@ class PostController extends Controller
     {
         $nome = "Rafael";
         $posts = Post::orderBy('id', 'DESC')->paginate(5);
-        return view('posts.post', ['nome' => $nome, 'posts' => $posts]);
+        return view('posts.posts', ['nome' => $nome, 'posts' => $posts]);
     }
 
     public function create()

@@ -16,18 +16,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', [HomeController::class, 'index'])->name('index');
-// Route::get('/create', [HomeController::class, 'create'])->name('create');
-// Route::post('/store', [HomeController::class, 'store'])->name('store');
-// Route::delete('/delete/{id}', [HomeController::class, 'destroy'])->name('destroy');
-// Route::get('/edit/{id}', [HomeController::class, 'edit'])->name('edit');
-// Route::get('/show/{id}', [HomeController::class, 'show'])->name('show');
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
+Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 
 
-Route::middleware('auth')->group(function(){
+
+/* Route::middleware('auth')->group(function(){
     Route::resource('/posts', PostController::class);
     Route::get('/sair', [LoginController::class, 'logout'])->name('sair');
 });
+ */
+Route::get('/sair', [LoginController::class, 'logout'])->name('sair');
 
 Route::resource('/login', LoginController::class);
     
